@@ -2,7 +2,7 @@
   "name": "envis",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YOUR_USERNAME.github.io/envis-frontend",
+  "homepage": "https://saimasanjidashila.github.io/envis-frontend",
   "dependencies": {
     "@react-leaflet/core": "^3.0.0",
     "@testing-library/dom": "^10.4.0",
