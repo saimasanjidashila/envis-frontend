@@ -153,7 +153,7 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
         maxBounds={[[-85, -180], [85, 180]]} // Crop top & bottom
         maxBoundsViscosity={1.0}
         style={{ height: "100%", width: "100%" }}
-        whenCreated={(mapInstance) => { mapRef.current = mapInstance; setMapReady(true);}}
+        whenCreated={(mapInstance) => { mapRef.current = mapInstance; }}
       >
       <TileLayer
         url="https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/VIIRS_CityLights_2012/default/2020-01-01/250m/{z}/{y}/{x}.jpg"
