@@ -163,7 +163,7 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
       />
         {showSST && (
             <ImageOverlay
-              url="http://127.0.0.1:5000/sst_today_overlay"
+              url="https://envis-backend.onrender.com/sst_today_overlay"
               bounds={[[-90, -180], [90, 180]]}
               opacity={0.8}
               zIndex={500}
@@ -172,7 +172,7 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
         )}
         {showPredSST && (
           <ImageOverlay
-           url="http://127.0.0.1:5000/predicted_sst_tomorrow_overlay"
+           url="https://envis-backend.onrender.com/predicted_sst_tomorrow_overlay"
            bounds={[[-90, -180], [90, 180]]}
            opacity={0.8}
            zIndex={498}
@@ -182,7 +182,7 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
 
         {showDust && (
            <ImageOverlay
-             url="http://127.0.0.1:5000/dust_today_overlay"  // Flask should serve this path
+             url="https://envis-backend.onrender.com/dust_today_overlay"  // Flask should serve this path
              bounds={[[-90, -180], [90, 180]]}
              opacity={0.8}
              zIndex={499}

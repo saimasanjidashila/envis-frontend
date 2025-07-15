@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import { FaWater, FaWind, FaCloudSunRain, FaUpload } from "react-icons/fa";
 
 const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPredSST,onGeoJSONUpload,sidebarOpen,setSidebarOpen,}) => {
+  const BASE_URL = "https://envis-backend.onrender.com";
   const [uploading, setUploading] = useState(false);
   const [rendering, setRendering] = useState(false);
   const [csvColumns, setCsvColumns] = useState([]);
