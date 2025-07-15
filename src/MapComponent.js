@@ -106,7 +106,6 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
   const [coast, setCoast] = useState(null);
   const [state, setState] = useState(null);
   const [countries, setCountries] = useState(null);
-  const [mapReady, setMapReady] = useState(false);
   const [water, setWater] = useState(null);
   
 
