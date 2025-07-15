@@ -101,7 +101,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
     setUploading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/upload", {
+      const res = await fetch("https://envis-backend.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
