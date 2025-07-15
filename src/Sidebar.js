@@ -131,13 +131,13 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
 
     setRendering(true);
     try {
-      const res = await fetch("http://127.0.0.1:5000/render", {
+      const res = await fetch("https://envis-backend.onrender.com/render", {
         method: "POST",
         body: formData,
       });
       const result = await res.json();
       if (result.path && result.variable) {
-        const geo = await fetch(`http://127.0.0.1:5000${result.path}`).then((res) => res.json());
+        const geo = await fetch(`https://envis-backend.onrender.com${result.path}`).then((res) => res.json());
         onGeoJSONUpload({ geo, variable: result.variable });
       } else {
         alert(result.error || "Failed to render map.");
@@ -163,7 +163,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
         </div>
         {sstMode === "preview" && (
           <img
-            src="http://127.0.0.1:5000/sst-preview"
+            src="https://envis-backend.onrender.com/sst-preview"
             alt="Today's SST"
             style={{ width: "100%", borderRadius: "10px", marginTop: "10px" }}
           />
@@ -192,7 +192,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
         </div>
         {dustMode === "dust-preview" && (
           <img
-            src="http://127.0.0.1:5000/dust-preview"
+            src="https://envis-backend.onrender.com/dust-preview"
             alt="Today's Dust"
             style={{ width: "100%", borderRadius: "10px", marginTop: "10px" }}
           />
@@ -220,7 +220,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
         </div>
         {tomorrowSSTMode === "preview" && (
           <img
-            src="http://127.0.0.1:5000/sst-tomorrow-preview"
+            src="https://envis-backend.onrender.com/sst-tomorrow-preview"
             alt="Predicted SST for Tomorrow"
             style={{ width: "100%", borderRadius: "10px", marginTop: "10px" }}
           />
