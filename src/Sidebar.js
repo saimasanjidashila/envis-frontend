@@ -77,7 +77,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
       long_name: "Predicted Sea Surface Temperature",
       units: "°C",
       source: "ML Model Forecast",
-      institution: "AI Pipeline",
+      institution: "ML Pipeline",
       date_range: "Tomorrow",
       shape: [1, 361, 720],
       dimensions: ["time", "lat", "lon"],
@@ -162,7 +162,7 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
           <button onClick={handleSSTDetails}>Details</button>
           <button onClick={handleSSTToggle}>View</button>
         </div>
-        {sstMode === "preview" && (
+        {sstMode === "🔍preview" && (
           <img
             src="https://envis-backend.onrender.com/sst-preview"
             alt="Today's SST"
