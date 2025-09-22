@@ -30,18 +30,6 @@ function normalizeVariableName(raw) {
   }
   return cleaned;
 }
-// find the actual key as it appears in the CSV/GeoJSON (keeps original casing)
-function findKeyCI(obj, desiredKey) {
-  if (!obj || !desiredKey) return null;
-  const wanted = desiredKey.trim().toLowerCase();
-  return Object.keys(obj).find(k => k.toLowerCase() === wanted) || null;
-}
-let actualKey = findKeyCI(feature.properties, variableName);
-
-if (!actualKey) {
-    const canonical = normalizeVariableName(variableName);
-    actualKey = findKeyByCanonical(feature.properties, canonical) || variableName;
-}
 
 // Color mapping function
 function getColorForValue(variable, value) {
@@ -118,8 +106,6 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
   const [coast, setCoast] = useState(null);
   const [state, setState] = useState(null);
   const [countries, setCountries] = useState(null);
-  const [displayVarName, setDisplayVarName] = useState(variableName);
-  const hasSetDisplayName = useRef(false); // avoid spamming setState for every point
   const [water, setWater] = useState(null);
   
 
@@ -206,39 +192,13 @@ const MapComponent = ({ showSST, showDust, showPredSST, uploadedGeoJSON, variabl
         {uploadedGeoJSON && (
           <GeoJSON
             data={uploadedGeoJSON}
-            pointToLayer={(feature, latlng) => {
-            // what the user selected in UI (keep as-is)
-            const desired = variableName;
-
-            // canonical/normalized for color logic only
-            const canonical = normalizeVariableName(desired);
-
-            // try to find the exact CSV header (original case) that matches the desired key
-            let actualKey = findKeyCI(feature.properties, desired);
-
-            // if not found, try matching by canonical name (handles aliases like "cloud mask" -> "acm")
-            if (!actualKey) {
-                actualKey = findKeyByCanonical(feature.properties, canonical) || desired;
-             }
-
-            // set legend title once per layer to the original header we actually found
-            if (!hasSetDisplayName.current && actualKey && actualKey !== displayVarName) {
-                setDisplayVarName(actualKey);
-                hasSetDisplayName.current = true;
-             }
-
-            const value = feature.properties[actualKey] ?? Object.values(feature.properties)[0];
-            const color = getColorForValue(canonical, value);
-
-            return L.circleMarker(latlng, {
-               radius: 4,
-               fillColor: color,
-               color,
-               weight: 0.5,
-               fillOpacity: 0.8
-               });
-             }}
-
+            pointToLayer={(feature, latlng) => { 
+               const key = normalizeVariableName(variableName); 
+               const value = feature.properties[key] ??
+            Object.values(feature.properties)[0]; 
+              const color = getColorForValue(key, value); 
+              return L.circleMarker(latlng, { radius: 4, fillColor: color, color: color, weight: 0.5, fillOpacity: 0.8 }); 
+            }}
             onEachFeature={(feature, layer) => {
               if (feature.properties) {
                 const label = Object.entries(feature.properties).map(([k, v]) => `${k}: ${v}`).join("<br/>");
