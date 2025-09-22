@@ -36,11 +36,11 @@ function findKeyCI(obj, desiredKey) {
   const wanted = desiredKey.trim().toLowerCase();
   return Object.keys(obj).find(k => k.toLowerCase() === wanted) || null;
 }
+let actualKey = findKeyCI(feature.properties, variableName);
 
-// fallback: find a key whose normalized form matches the canonical name
-function findKeyByCanonical(obj, canonical) {
-  if (!obj || !canonical) return null;
-  return Object.keys(obj).find(k => normalizeVariableName(k) === canonical) || null;
+if (!actualKey) {
+    const canonical = normalizeVariableName(variableName);
+    actualKey = findKeyByCanonical(feature.properties, canonical) || variableName;
 }
 
 // Color mapping function
