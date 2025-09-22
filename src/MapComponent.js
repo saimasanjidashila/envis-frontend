@@ -24,9 +24,9 @@ function normalizeVariableName(raw) {
     ccl: ["ccl", "CCL", "cloud condensation level", "cloud base", "cloud base height", "CBH"]
   };
 
-  const cleaned = raw.trim().toUpperCase();
+  const cleaned = raw.trim().toLowerCase();
   for (const [canonical, aliases] of Object.entries(lookup)) {
-    if (aliases.map(a => a.toUpperCase()).includes(cleaned)) return canonical;
+    if (aliases.map(a => a.toLowerCase()).includes(cleaned)) return canonical;
   }
   return cleaned;
 }
