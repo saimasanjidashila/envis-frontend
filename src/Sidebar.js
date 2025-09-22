@@ -158,11 +158,11 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
       <div className="sidebar-data">
         <h3><FaWater style={{ marginRight: "8px" }}/> Today's SST</h3>
         <div className="button-group">
-          <button onClick={() => setSstMode("preview")}>Preview</button>
-          <button onClick={handleSSTDetails}>Details</button>
-          <button onClick={handleSSTToggle}>View</button>
+          <button onClick={() => setSstMode("preview")}>🔍Preview</button>
+          <button onClick={handleSSTDetails}>🧾Details</button>
+          <button onClick={handleSSTToggle}>👉View</button>
         </div>
-        {sstMode === "🔍preview" && (
+        {sstMode === "preview" && (
           <img
             src="https://envis-backend.onrender.com/sst-preview"
             alt="Today's SST"
@@ -187,9 +187,9 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
       <div className="sidebar-data">
         <h3><FaWind style={{ marginRight: "8px" }}/> Today's Dust</h3>
         <div className="button-group">
-          <button onClick={() => setDustMode("dust-preview")}>Preview</button>
-          <button onClick={handleDustDetails}>Details</button>
-          <button onClick={handleDustToggle}>View</button>
+          <button onClick={() => setDustMode("dust-preview")}>🔍Preview</button>
+          <button onClick={handleDustDetails}>🧾Details</button>
+          <button onClick={handleDustToggle}>👉View</button>
         </div>
         {dustMode === "dust-preview" && (
           <img
@@ -215,9 +215,9 @@ const Sidebar = ({showSST,setShowSST,showDust,setShowDust,showPredSST,setShowPre
       <div className="sidebar-data">
         <h3><FaCloudSunRain style={{ marginRight: "8px" }}/>Tomorrow's SST</h3>
         <div className="button-group">
-          <button onClick={() => setTomorrowSSTMode("preview")}>Preview</button>
-          <button onClick={handleTomorrowSSTDetails}>Details</button>
-          <button onClick={handleTomorrowSSTToggle}>View</button>
+          <button onClick={() => setTomorrowSSTMode("preview")}>🔍Preview</button>
+          <button onClick={handleTomorrowSSTDetails}>🧾Details</button>
+          <button onClick={handleTomorrowSSTToggle}>👉View</button>
         </div>
         {tomorrowSSTMode === "preview" && (
           <img
